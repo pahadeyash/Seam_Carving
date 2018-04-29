@@ -5,20 +5,20 @@ function [cumulativeEnergyMap] = cumulative_min_energy_map(energyImg,seamDirecti
 
 cumulativeEnergyMap = energyImg;
 if strcmp(seamDirection, 'VERTICAL')
-    for x = 2:m
+    for x = 2:m % iterating row
         cumulativeEnergyMap(x, 1) = energyImg(x,1) + min([cumulativeEnergyMap(x-1, 1), cumulativeEnergyMap(x-1,2)]);
         cumulativeEnergyMap(x, n) = energyImg(x,n) + min([cumulativeEnergyMap(x-1, n-1), cumulativeEnergyMap(x-1, n)]);
-        for y = 2:n-1
+        for y = 2:n-1 % iterating column
             cumulativeEnergyMap(x,y) = energyImg(x,y) + min([cumulativeEnergyMap(x-1, y-1), cumulativeEnergyMap(x-1,y), cumulativeEnergyMap(x-1, y+1)]);
         end
     end
 
 elseif strcmp(seamDirection, 'HORIZONTAL')
-    for y = 2:m
+    for y = 2:n % iterating column
         cumulativeEnergyMap(y, 1) = energyImg(y,1) + min([cumulativeEnergyMap(y-1, 1), cumulativeEnergyMap(y-1,2)]);
         cumulativeEnergyMap(y, n) = energyImg(y,n) + min([cumulativeEnergyMap(y-1, n-1), cumulativeEnergyMap(y-1, n)]);
-        for x = 2:n-1
-            cumulativeEnergyMap(x,y) = energyImg(x,y) + min([cumulativeEnergyMap(x-1, y-1), cumulativeEnergyMap(x-1,y), cumulativeEnergyMap(x-1, y+1)]);
+        for x = 2:m-1 % iterating row
+            cumulativeEnergyMap(y,x) = energyImg(y,x) + min([cumulativeEnergyMap(y-1, x-1), cumulativeEnergyMap(y-1,x), cumulativeEnergyMap(y-1, x+1)]);
         end
     end
 end
