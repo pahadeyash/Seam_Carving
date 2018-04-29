@@ -1,5 +1,5 @@
 function [cumulativeEnergyMap] = cumulative_min_energy_map(energyImg,seamDirection)
-%UNTITLED Summary of this function goes here
+%UNTITLED2 Summary of this function goes here
 %   Detailed explanation goes here
 [m,n] = size(energyImg);
 

@@ -1,9 +1,9 @@
 function horizontalSeam = find_horizontal_seam(cumulativeEnergyMap)
-%UNTITLED Summary of this function goes here
+%UNTITLED4 Summary of this function goes here
 %   Detailed explanation goes here
 [m,n] = size(cumulativeEnergyMap);
 
-horizontalSeam = cumulativeEnergyMap(0, :);
+horizontalSeam = zeros(1,n);
 
 % finding minimum in last column
 lastCol = cumulativeEnergyMap(:,n);
