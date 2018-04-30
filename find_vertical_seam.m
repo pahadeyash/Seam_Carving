@@ -18,4 +18,3 @@ for x = m-1:-1:1
     verticalSeam(x) = min_idx;
 end
 end
-

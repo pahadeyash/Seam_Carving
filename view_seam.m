@@ -1,4 +1,4 @@
-function [img] = view_seam(im, seam, seamDirection)
+function view_seam(im, seam, seamDirection)
 %UNTITLED5 Summary of this function goes here
 %   Detailed explanation goes here
 
