@@ -15,10 +15,10 @@ if strcmp(seamDirection, 'VERTICAL')
 
 elseif strcmp(seamDirection, 'HORIZONTAL')
     for y = 2:n % iterating column
-        cumulativeEnergyMap(y, 1) = energyImg(y,1) + min([cumulativeEnergyMap(y-1, 1), cumulativeEnergyMap(y-1,2)]);
-        cumulativeEnergyMap(y, n) = energyImg(y,n) + min([cumulativeEnergyMap(y-1, n-1), cumulativeEnergyMap(y-1, n)]);
+        cumulativeEnergyMap(1, y) = energyImg(1, y) + min([cumulativeEnergyMap(1, y-1), cumulativeEnergyMap(2, y-1)]);
+        cumulativeEnergyMap(m, y) = energyImg(m, y) + min([cumulativeEnergyMap(m-1, y-1), cumulativeEnergyMap(m, y-1)]);
         for x = 2:m-1 % iterating row
-            cumulativeEnergyMap(y,x) = energyImg(y,x) + min([cumulativeEnergyMap(y-1, x-1), cumulativeEnergyMap(y-1,x), cumulativeEnergyMap(y-1, x+1)]);
+            cumulativeEnergyMap(x,y) = energyImg(x, y) + min([cumulativeEnergyMap(x-1,y-1), cumulativeEnergyMap(x, y-1), cumulativeEnergyMap(x+1, y-1)]);
         end
     end
 end
