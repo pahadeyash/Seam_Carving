@@ -7,17 +7,17 @@ horizontalSeam = zeros(1,n);
 
 % finding minimum in last column
 lastCol = cumulativeEnergyMap(:,n);
-min_val, min_idx = min(lastCol);
+[min_val, min_idx] = min(lastCol);
 horizontalSeam(n) = min_idx;
 
 % backtracking
 for y = n-1:-1:1
     if (min_idx == m)
-        min_val, min_idx = min([cumulativeEnergyMap(min_idx-1, y), cumulativeEnergyMap(min_idx, y)]);
+        [min_val, min_idx] = min([cumulativeEnergyMap(min_idx-1, y), cumulativeEnergyMap(min_idx, y)]);
     elseif (min_idx == 1)
-        min_val, min_idx = min([cumulativeEnergyMap(min_idx, y), cumulativeEnergy(min_idx+1, y)]);
+        [min_val, min_idx] = min([cumulativeEnergyMap(min_idx, y), cumulativeEnergyMap(min_idx+1, y)]);
     else
-        min_val, min_idx = min([cumulativeEnergyMap(min_idx-1, y), cumulativeEnergyMap(min_idx, y), cumulativeEnergy(min_idx+1, y)]);
+        [min_val, min_idx] = min([cumulativeEnergyMap(min_idx-1, y), cumulativeEnergyMap(min_idx, y), cumulativeEnergyMap(min_idx+1, y)]);
     end
     horizontalSeam(y) = min_idx;
 end

@@ -6,7 +6,7 @@ reducedColorImg = uint8(zeros(m-1, n, d));
 reducedEnergyImg = double(zeros(m-1, n));
 
 cumulativeEnergyMap = cumulative_min_energy_map(im, 'HORIZONTAL');
-seam = find_vertical_seam(cumulativeEnergyMap);
+seam = find_horizontal_seam(cumulativeEnergyMap);
 
 for i=1:n
     if seam(i) == 1
