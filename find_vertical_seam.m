@@ -5,17 +5,23 @@ function [verticalSeam] = find_vertical_seam(cumulativeEnergyMap)
 verticalSeam = zeros(1,m);
 [~, min_idx] = min(cumulativeEnergyMap(m,:));
 verticalSeam(m) = min_idx;
-fprintf('%i\n', min_idx);
 
 for x = m-1:-1:1
     if (min_idx == 1)
-        [~,min_idx] = min([cumulativeEnergyMap(x,min_idx), cumulativeEnergyMap(x, min_idx+1)]);
+        [~,temp_idx] = min([cumulativeEnergyMap(x,min_idx), cumulativeEnergyMap(x, min_idx+1)]);
     elseif (min_idx == n)
-        [~,min_idx] = min([cumulativeEnergyMap(x,min_idx), cumulativeEnergyMap(x, min_idx-1)]);
+        [~,temp_idx] = min([cumulativeEnergyMap(x,min_idx), cumulativeEnergyMap(x, min_idx-1)]);
     else
-        fprintf('%i\n', min_idx);
-        [~,min_idx] = min([cumulativeEnergyMap(x,min_idx-1), cumulativeEnergyMap(x, min_idx), cumulativeEnergyMap(x, min_idx+1)]);
+        [~,temp_idx] = min([cumulativeEnergyMap(x,min_idx) cumulativeEnergyMap(x, min_idx-1) cumulativeEnergyMap(x, min_idx+1)]);
     end
-    verticalSeam(x) = min_idx;
+    
+    if temp_idx == 2
+        min_idx = min_idx - 1;
+    elseif temp_idx ==3
+        min_idx = min_idx + 1;
+    end
+    
+    verticalSeam(x) = min_idx; 
+        
 end
 end
