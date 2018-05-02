@@ -5,7 +5,7 @@ function [reducedColorImg, reducedEnergyImg] = decrease_height(im,energyImg)
 reducedColorImg = uint8(zeros(m-1, n, d));
 reducedEnergyImg = double(zeros(m-1, n));
 
-cumulativeEnergyMap = cumulative_min_energy_map(im, 'HORIZONTAL');
+cumulativeEnergyMap = cumulative_min_energy_map(energyImg, 'HORIZONTAL');
 seam = find_horizontal_seam(cumulativeEnergyMap);
 
 for i=1:n
