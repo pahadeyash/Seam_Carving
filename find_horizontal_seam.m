@@ -28,7 +28,7 @@ horizontalSeam = zeros(1,n);
 %     
 %     horizontalSeam(y) = min_idx; 
 % end
-A = transpose(cumulativeEnergyMap);
+A = permute(cumulativeEnergyMap, [2 1 3]);
 horizontalSeam = find_vertical_seam(A);
 
 end

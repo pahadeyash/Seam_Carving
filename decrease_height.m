@@ -21,3 +21,5 @@ for i=1:n
         reducedEnergyImg(:,2) = energyImg([1:seam(i)-1 seam(i)+1:end], i);
     end
 end
+
+end

@@ -17,11 +17,7 @@ for x = m-1:-1:1
     
     if temp_idx == 2
         min_idx = min_idx - 1;
-    elseif temp_idx ==3
-        min_idx = min_idx + 1;
-    end
-    
-    verticalSeam(x) = min_idx; 
+    else if 
         
 end
 end
